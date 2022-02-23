@@ -1,24 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from 'react-router-dom';
+import {useDispatch, useSelector} from 'react-redux';
+import {Spin, message} from 'antd';
+import {getUserDetails, logout, selectUser} from './redux/slices/user';
+import Dashboard from './pages/dashboard/Main';
+import Login from './pages/login/Main';
 
-function App() {
+const App = () => {
+  const [loading, handleLoading] = useState(true);
+  const dispatch = useDispatch();
+  const user = localStorage.getItem('vortex_user');
+  const userInfo = useSelector(selectUser);
+
+  useEffect(() => {
+    const initialFetch = async () => {
+      if (user) {
+        const response = await dispatch(getUserDetails(user));
+        if (response.status !== 'success') {
+          message.warning('Your session has expired!');
+          dispatch(logout());
+        }
+      }
+      handleLoading(false);
+    };
+    initialFetch();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="main-loader">
+        <Spin size="large" />
+      </div>
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/*" element={userInfo ? <Dashboard /> : <Login />} />
+      </Routes>
+    </Router>
   );
 }
 

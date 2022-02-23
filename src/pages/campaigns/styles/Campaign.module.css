@@ -1,0 +1,73 @@
+.campaign {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.photo {
+  height: 180px;
+  background-size: cover;
+  width: 100%;
+  background-position: center;
+}
+
+.infoWrap {
+  background-color: var(--purple);
+  padding: 20px;
+}
+
+.title {
+  color: white;
+  display: flex;
+  margin-bottom: 15px;
+  font-family: Termina;
+  font-weight: 600;
+}
+
+.description {
+  font-weight: 500;
+  color: var(--lightPurple);
+  overflow: hidden;
+  display: block;
+  height: 40px;
+  text-overflow: ellipsis;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.players {
+  display: flex;
+  flex-direction: column;
+}
+
+.playersLabel {
+  color: var(--yellow);
+  font-weight: 700;
+  font-size: 9px;
+  margin-bottom: 2px;
+}
+
+.playersNumber {
+  color: var(--orange);
+  font-family: Termina;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.detail {
+  background-color: var(--green);
+  padding: 8px 20px;
+  font-weight: 500;
+  color: var(--purple);
+  border-radius: 4px;
+}
+
+.detail:hover {
+  color: var(--purple);
+}

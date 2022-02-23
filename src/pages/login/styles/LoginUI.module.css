@@ -1,0 +1,136 @@
+.login {
+  background-color: var(--background);
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sideWrap {
+  height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--purple);
+}
+
+
+.formWrap {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.form {
+  max-width: 450px;
+}
+
+.logo {
+  width: 190px;
+}
+
+.description {
+  display: block;
+  color: var(--lightPurple);
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 25px;
+  margin-top: 5px;
+}
+
+.submit {
+  background-color: var(--secondPurple);
+  border-radius: 7px;
+  border: none;
+  height: 65px;
+  margin-top: 60px;
+  font-weight: 500;
+  width: 100%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  cursor: pointer;
+}
+
+.submit img {
+  width: 35px;
+}
+
+.social {
+  margin-top: 80px;
+}
+
+.social svg {
+  color: var(--lightPurple);
+  width: 30px;
+}
+
+.mainInfo {
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+}
+
+.infoTitles {
+  color: white;
+  font-family: Termina;
+  font-size: 34px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.infoDescription {
+  color: white;
+  font-size: 16px;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.yellowStroke {
+  position: absolute;
+  top: -160px;
+  left: -40px;
+  width: 280px;
+}
+
+.purpleSemicircle {
+  position: absolute;
+  top: 30px;
+  right: -25px;
+  width: 120px;
+  height: 110.7px;
+}
+
+.yellowStar {
+  position: absolute;
+  right: 100px;
+  width: 25px;
+  margin-top: -300px;
+}
+
+.purpleStar {
+  width: 500px;
+  position: absolute;
+  bottom: -320px;
+  right: -200px;
+}
+
+.greenStar {
+  width: 100px;
+  position: absolute;
+  bottom: 160px;
+  right: 80px;
+}
+
+.greenStroke {
+  width: 200px;
+  position: absolute;
+  bottom: -60px;
+  left: -60px;
+}

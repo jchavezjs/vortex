@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 375.9px;
+}
+
+.qr {
+  width: 70%;
+  height: 281px;
+}
+
+.indications {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+.indications span {
+   margin-right: 10px;
+   font-weight: 500;
+}
+
+.loader {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
