@@ -15,7 +15,7 @@ const Campaigns = () => {
 
   const initialFetch = useCallback(async () => {
     // const response = await dispatch(myCampaigns(user.account));
-    const response = await dispatch(myCampaigns('rUbkduh1MHWB7yNUVbVAkwMRpmcNgfBQBh'));
+    const response = await dispatch(myCampaigns(user.account));
     if (response.status === 'success') {
       handleResults(response.campaigns);
     } else {
@@ -27,11 +27,11 @@ const Campaigns = () => {
   useEffect(() => {
     initialFetch();
   }, [initialFetch]);
-
+/* 
   useEffect(() => {
     handleResults(campaigns);
     handleSearchVal('');
-  }, [campaigns]);
+  }, [campaigns]); */
 
   function slugify(str) {
     const map = {

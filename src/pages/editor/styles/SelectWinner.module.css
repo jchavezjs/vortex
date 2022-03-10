@@ -1,0 +1,59 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+  justify-content: center;
+}
+
+.animation {
+  width: 60%;
+  margin-bottom: 40px;
+}
+
+.indications {
+  font-weight: 500;
+}
+
+.indications span {
+  display: inline-block;
+  margin-right: 20px;
+  font-size: 18px;
+  color: #fff;
+}
+
+.congrats {
+  font-family: Termina;
+  font-weight: 700;
+  color: var(--green);
+  font-size: 26px;
+  margin-bottom: 60px;
+}
+
+.confetti {
+  position: absolute;
+  width: 100%;
+}
+
+.name {
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.account {
+  color: var(--orange);
+}
+
+.disclaimer {
+  color: var(--lightPurple);
+  text-align: center;
+  margin-top: 60px;
+  margin-bottom: -20px;
+  width: 70%;
+}
+
+.close {
+  margin-top: 60px;
+  width: 200px;
+}

@@ -1,4 +1,4 @@
-import {Row, Col, Modal} from 'antd';
+import {Row, Col, Modal, Tabs, Form, Input, Button} from 'antd';
 import {ReactComponent as Logo} from '../../../assets/logos/logo.svg';
 import {ReactComponent as Twitter} from '../../../assets/social/twitter.svg';
 import {ReactComponent as YellowStroke} from '../../../assets/forms/yellowStroke.svg';
@@ -11,7 +11,9 @@ import Auth from '../../../components/Auth';
 import Xumm from '../../../assets/logos/xumm.png';
 import styles from '../styles/LoginUI.module.css';
 
-const LoginUI = ({connectVisible, handleConnectVisible}) => (
+const {TabPane} = Tabs;
+
+const LoginUI = ({connectVisible, handleConnectVisible, login, form, sending}) => (
   <div className={styles.login}>
     <Row>
       <Col lg={13}>
@@ -21,12 +23,56 @@ const LoginUI = ({connectVisible, handleConnectVisible}) => (
             <span className={styles.description}>
               The Web 3.0 way to create contests for influencers and brands.
             </span>
-            <button
-              onClick={() => handleConnectVisible(true)}
-              className={styles.submit}>
-              <span>Connect with your Xuum Wallet</span>
-              <img src={Xumm} alt="" />
-            </button>
+            <Tabs size="large" defaultActiveKey="1" className={styles.tabs}>
+              <TabPane tab="Company / Influencer" key="1">
+                <Form
+                  form={form}
+                  onFinish={login}
+                  autoComplete="off"
+                >
+                  <Form.Item
+                    name="email"
+                    rules={[{ required: true, message: 'Email is required' }]}
+                  >
+                    <Input
+                      bordered={false}
+                      size="large"
+                      type="email"
+                      className={styles.input}
+                      placeholder="Email"
+                    />
+                  </Form.Item>
+                  <Form.Item
+                    name="password"
+                    rules={[{ required: true, message: 'Password is required' }]}
+                  >
+                    <Input
+                      bordered={false}
+                      type="password"
+                      size="large"
+                      className={styles.input}
+                      placeholder="Password"
+                    />
+                  </Form.Item>
+                  <Form.Item className={styles.submitItem}>
+                    <Button
+                      htmlType="submit"
+                      loading={sending}
+                      className={styles.submitInfo}>
+                      Sign in
+                    </Button>
+                  </Form.Item>
+                </Form>
+              </TabPane>
+              <TabPane tab="Player" key="2">
+                <button
+                  onClick={() => handleConnectVisible(true)}
+                  className={styles.submit}>
+                  <span>Connect with your Xuum Wallet</span>
+                  <img src={Xumm} alt="" />
+                </button>
+              </TabPane>
+            </Tabs>
             <div className={styles.social}>
               <a
                 href="https://twitter.com/appvortex"

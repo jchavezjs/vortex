@@ -6,7 +6,7 @@ import styles from './styles/Auth.module.css';
 
 let socket;
 
-const Auth = () => {
+const Auth = ({player, getAddressByQR, close}) => {
   const [loading, handleLoading] = useState(true);
   const [ws, handleWs] = useState(null);
   const [qr, handleQr] = useState('');
@@ -15,15 +15,20 @@ const Auth = () => {
   const getUser = useCallback(async user => {
     const response = await dispatch(getUserLogin(user));
     if (response.status === 'success') {
-      await localStorage.setItem('vortex_user', response.address);
-      const response_user = await dispatch(getUserDetails(response.address));
-      if (response_user.status !== 'success') {
-        message.error('Try again later!');
+      if (player) {
+        getAddressByQR(response.address);
+        close();
+      } else {
+        await localStorage.setItem('vortex_user', JSON.stringify({address: response.address, type: 'player'}));
+        const response_user = await dispatch(getUserDetails(response.address, 'player'));
+        if (response_user.status !== 'success') {
+          message.error('Try again later!');
+        }
       }
     } else {
       message.error('Try again later!');
     }
-  }, [dispatch]);
+  }, [close, dispatch, getAddressByQR, player]);
 
   useEffect(() => {
     const initialFetch = async () => {

@@ -35,3 +35,18 @@ export const getQRCode = async () => {
     });
   return data;
 };
+
+export const login = async (email, password) => {
+  const request = await instance();
+  let data = await request
+    .post('/login', {
+      email,
+      password,
+    })
+    .catch((error) => {
+      return {
+        error,
+      };
+    });
+  return data;
+};

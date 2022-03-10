@@ -3,6 +3,7 @@ import cx from 'classnames';
 import styles from '../styles/Campaign.module.css';
 
 const Campaign = ({campaign}) => {
+  const isActive = campaign.active;
   return (
     <div className={styles.campaign}>
       <div className={styles.photo} style={{backgroundImage: `url(${campaign.image})`}} />
@@ -24,6 +25,9 @@ const Campaign = ({campaign}) => {
           </Link>
         </div>
       </div>
+      <span className={cx(styles.active, {[styles.closed]: !isActive})}>
+        {isActive ? 'ACTIVE' : 'CLOSED'}
+      </span>
     </div>
   );
 };

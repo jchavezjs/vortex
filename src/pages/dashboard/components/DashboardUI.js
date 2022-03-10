@@ -1,5 +1,5 @@
 import {Row, Col} from 'antd';
-import {Routes, Route} from 'react-router-dom';
+import {Routes, Route, Link} from 'react-router-dom';
 import {ReactComponent as Logo} from '../../../assets/logos/logo.svg';
 import {ReactComponent as YellowStroke} from '../../../assets/forms/yellowStroke.svg';
 import {ReactComponent as PurpleStar} from '../../../assets/forms/purpleStar.svg';
@@ -21,8 +21,9 @@ const DashboardUI = props => {
       <Row style={{zIndex: 20}}>
         <Col span={24}>
           <div className={styles.header}>
-            <Logo className={styles.logo} />
-            <span>{user.balance / 1000000 || 0} XRP</span>
+            <Link to="/" className={styles.logoWrap}>
+              <Logo className={styles.logo} />
+            </Link>
             <div className={styles.accountWrap}>
               <span className={styles.address}>
                 {`${account.substring(0, 4)}...${account.substring(account.length, account.length - 4)}`}

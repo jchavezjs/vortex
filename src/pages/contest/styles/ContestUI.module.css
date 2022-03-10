@@ -1,0 +1,212 @@
+.contest {
+  background-color: var(--purple);
+  overflow: hidden;
+  height: 100vh;
+  position: relative;
+  padding: 60px 140px;
+}
+
+.yellowStroke {
+  position: absolute;
+  top: -140px;
+  left: -120px;
+  width: 280px;
+}
+
+.purpleSemicircle {
+  position: absolute;
+  top: 30px;
+  right: -25px;
+  width: 120px;
+  height: 110.7px;
+}
+
+.yellowStar {
+  position: absolute;
+  width: 25px;
+  margin-top: -600px;
+  right: 200px;
+}
+
+.purpleStar {
+  width: 500px;
+  position: absolute;
+  bottom: -330px;
+  right: -250px;
+}
+
+.greenStar {
+  width: 100px;
+  position: absolute;
+  bottom: 60px;
+  right: 100px;
+}
+
+.greenStroke {
+  width: 200px;
+  position: absolute;
+  bottom: -60px;
+  left: -60px;
+}
+
+.content {
+
+}
+
+.logo {
+  width: 160px;
+}
+
+.titles {
+  margin-top: 50px;
+}
+
+.titles h1 {
+  color: #fff;
+  font-family: Termina;
+  font-weight: 600;
+  font-size: 32px;
+}
+
+.titles h2 {
+  color: var(--lightPurple);
+  font-weight: 500;
+  font-size: 20px;
+  margin-bottom: 0;
+}
+
+.form {
+  /* width: 450px; */
+}
+
+.submit {
+  background-color: var(--secondPurple);
+  border-radius: 7px;
+  border: none;
+  height: 65px;
+  font-weight: 500;
+  width: 100%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  cursor: pointer;
+  margin-bottom: 40px;
+}
+
+.submit img {
+  width: 35px;
+}
+
+.wrapperImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding-left: 160px;
+  position: relative;
+  padding-bottom: 60px;
+}
+
+.spirals {
+  width: 600px;
+  height: 661.54px;
+  position: absolute;
+  z-index: 0;
+}
+
+:global(.card) {
+  width: 400px;
+  height: 400px;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  z-index: 1;
+}
+
+:global(.card-item) {
+  transition: transform .2s;
+}
+
+.photo {
+  border-radius: 7px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.purpleMiniStar {
+  position: absolute;
+  margin-bottom: -500px;
+  margin-left: -500px;
+  width: 100px;
+  height: 100px;
+}
+
+.input, .input:focus, .input:hover {
+  background-color: var(--background);
+  height: 65px;
+  text-align:  center;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.mainForm {
+  height: calc(100vh - 60px);
+  overflow-y: scroll;
+  padding-right: 40px;
+}
+
+.submitInfo, .submitInfo:hover, .submitInfo:focus{
+  height: 55px;
+  background: linear-gradient(133deg, rgba(0,215,140,1) 0%, rgba(79,35,239,1) 200%);
+  border: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  border-radius: 7px;
+  color: white;
+  float: right;
+  margin: 10px 0 20px 0;
+  cursor: pointer;
+}
+
+.closed {
+  margin-top: 160px;
+  font-size: 22px;
+  color: var(--lightPurple);
+}
+
+.strong {
+  color: var(--orange);
+  font-weight: 700;
+}
+
+.winnerInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.winnerImage {
+  padding-left: 0;
+  height: calc(100vh - 120px - 184.35px);
+  padding-bottom: 0;
+}
+
+.winnerAddress {
+  color: var(--green);
+  font-size: 22px;
+}
+
+.owner {
+  color: var(--gray);
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 30px;
+}

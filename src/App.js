@@ -8,6 +8,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {Spin, message} from 'antd';
 import {getUserDetails, logout, selectUser} from './redux/slices/user';
 import Dashboard from './pages/dashboard/Main';
+import Contest from './pages/contest/Main';
 import Login from './pages/login/Main';
 
 const App = () => {
@@ -19,7 +20,8 @@ const App = () => {
   useEffect(() => {
     const initialFetch = async () => {
       if (user) {
-        const response = await dispatch(getUserDetails(user));
+        const userInfo = JSON.parse(user);
+        const response = await dispatch(getUserDetails(userInfo.account, userInfo.type));
         if (response.status !== 'success') {
           message.warning('Your session has expired!');
           dispatch(logout());
@@ -41,6 +43,7 @@ const App = () => {
   return (
     <Router>
       <Routes>
+        <Route path="/contest/:owner/:id" element={<Contest />} />
         <Route path="/*" element={userInfo ? <Dashboard /> : <Login />} />
       </Routes>
     </Router>

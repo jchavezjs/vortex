@@ -45,7 +45,6 @@
   border-radius: 7px;
   border: none;
   height: 65px;
-  margin-top: 60px;
   font-weight: 500;
   width: 100%;
   color: white;
@@ -54,6 +53,8 @@
   justify-content: space-between;
   padding: 20px;
   cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 40px;
 }
 
 .submit img {
@@ -61,7 +62,7 @@
 }
 
 .social {
-  margin-top: 80px;
+  margin-top: 60px;
 }
 
 .social svg {
@@ -133,4 +134,40 @@
   position: absolute;
   bottom: -60px;
   left: -60px;
+}
+
+.tabs {
+  color: var(--lightPurple);
+  font-weight: 500;
+}
+
+.tabs :global(.ant-tabs-nav)::before {
+  border-bottom: 1px solid var(--lightPurple);
+}
+
+.input, .input:focus, .input:hover {
+  background-color: var(--purple);
+  height: 65px;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.submitInfo, .submitInfo:hover, .submitInfo:focus{
+  height: 55px;
+  background: linear-gradient(133deg, rgba(0,215,140,1) 0%, rgba(79,35,239,1) 200%);
+  border: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  border-radius: 7px;
+  color: white;
+  float: right;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.submitItem {
+  margin-bottom: 0;
 }

@@ -1,0 +1,249 @@
+.newCampaign {
+  height: 55px;
+  background: linear-gradient(133deg, rgba(79,35,239,1) 0%, rgba(255,122,49,1) 200%);
+  border: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  border-radius: 7px;
+  color: white;
+}
+
+.newCampaign:hover, .newCampaign:focus, .newCampaign:active {
+  background: linear-gradient(133deg, rgba(79,35,239,1) 0%, rgba(255,122,49,1) 200%);
+  color: white;
+}
+
+.selectWinner {
+  height: 55px;
+  background: linear-gradient(133deg, rgba(0,215,140,1) 0%, rgba(79,35,239,1) 200%);
+  border: none;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  border-radius: 7px;
+  color: white;
+}
+
+.selectWinner:hover, .selectWinner:focus, .selectWinner:active {
+  background: linear-gradient(133deg, rgba(0,215,140,1) 0%, rgba(79,35,239,1) 200%);
+  color: white;
+}
+
+.newCampaign :global(.material-icons-round) {
+  font-size: 18px;
+  margin-left: 10px;
+}
+
+.editor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.titles {
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+}
+
+.formWrap {
+  width: 70%;
+}
+
+.editCampaign {
+  width: 100%;
+}
+
+.title {
+  color: white;
+  font-weight: 700;
+  font-family: Termina;
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: var(--lightPurple);
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.wrapper {
+  background-color: var(--purple);
+  margin-top: 40px;
+  padding: 40px;
+  border-radius: 10px;
+}
+
+.label {
+  font-weight: 500;
+  color: var(--lightPurple);
+}
+
+.input {
+  height: 55px;
+  color: white;
+  background-color: var(--background) !important;
+  font-weight: 500;
+}
+
+.input::placeholder {
+  color: var(--lightPurple);
+}
+
+.picker {
+  height: 55px;
+  background-color: var(--background) !important;
+  font-weight: 500;
+  border: none;
+  width: 100%;
+}
+
+.picker input {
+  color: white !important;
+}
+
+.winners {
+  width: 80px;
+  text-align: center;
+}
+
+.photo {
+  aspect-ratio: 1;
+  border: 1px dashed rgba(238, 240, 248, 0.1);
+  border-radius: 10px;
+  color: rgba(238, 240, 248, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 40px;
+}
+
+.photo :global(.material-icons-round) {
+  font-size: 120px;
+}
+
+.itemUpload :global(.ant-upload-select) {
+  width: 100%;
+}
+
+.uploadImage {
+  background-color: var(--secondPurple);
+  width: 100%;
+  color: white;
+  border: none;
+  font-weight: 500;
+  height: 50px;
+}
+
+.uploadImage:hover, .uploadImage:focus, .uploadImage:active {
+  background-color: var(--secondPurple);
+  color: white;
+}
+
+.extraLabel {
+  color: var(--lightPurple);
+  text-align: center;
+  display: block;
+  margin-top: 10px;
+}
+
+.playersHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.playersHeaderLabel {
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.playersHeaderNumber {
+  color: var(--orange);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.player {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.playerNumber {
+  background-color: var(--background);
+  color: var(--lightPurple);
+  width: 45px;
+  height: 45px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 16px;
+  margin-right: 15px;
+}
+
+.playerAddress {
+  color: var(--lightPurple);
+  font-weight: 500;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  overflow: hidden;
+  flex: 1;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.submit {
+  margin-bottom: 0;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.share {
+  color: var(--orange);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  margin-right: 40px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.share :global(.material-icons-round) {
+  margin-left: 5px;
+  font-size: 20px;
+}
+
+.modal :global(.ant-modal-content) {
+  background-color: var(--purple);
+}
+
+.winner {
+  color: var(--orange);
+  font-weight: 600;
+}

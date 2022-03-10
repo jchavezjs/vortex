@@ -73,8 +73,8 @@
   height: calc(100vh - 72px);
   overflow-y: scroll;
   z-index: 1;
-  /* display: flex;
-  flex-direction: column;
-  height: calc(100vh - 78.45px);
-  overflow-y: scroll; */
+}
+
+.logoWrap {
+  margin-bottom: -5px;
 }
