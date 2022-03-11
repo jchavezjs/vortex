@@ -85,7 +85,7 @@ const Editor = () => {
   };
 
   const share = () => {
-    navigator.clipboard.writeText(`http://localhost:3000/contest/${user.account}/${params.id}`);
+    navigator.clipboard.writeText(`https://vortex-app.herokuapp.com/contest/${user.account}/${params.id}`);
     message.success('URL copied to clipboard');
   };
 
