@@ -1,12 +1,13 @@
 import {useState, useEffect, useCallback} from 'react';
 import {useDispatch} from 'react-redux';
 import {getQRApp, getUserLogin, getUserDetails} from '../redux/slices/user';
+import {getQRTransfer, verifyTransfer} from '../redux/slices/campaigns';
 import {Spin, message} from 'antd';
 import styles from './styles/Auth.module.css';
 
 let socket;
 
-const Auth = ({player, getAddressByQR, close}) => {
+const Auth = ({player, transfer, campaign, getAddressByQR, close, user}) => {
   const [loading, handleLoading] = useState(true);
   const [ws, handleWs] = useState(null);
   const [qr, handleQr] = useState('');
@@ -18,8 +19,19 @@ const Auth = ({player, getAddressByQR, close}) => {
       if (player) {
         getAddressByQR(response.address);
         close();
+      } else if (transfer) {
+        getQRTransfer(response.address);
+        close();
+        const response_transfer = await dispatch(verifyTransfer(user.account, campaign.id));
+        if (response_transfer.status !== 'success') {
+          message.error('Try again later!');
+          close();
+        } else {
+          message.success('NFT transfered to your account');
+          close();
+        }
       } else {
-        await localStorage.setItem('vortex_user', JSON.stringify({address: response.address, type: 'player'}));
+        await localStorage.setItem('vortex_user', JSON.stringify({account: response.address, type: 'player'}));
         const response_user = await dispatch(getUserDetails(response.address, 'player'));
         if (response_user.status !== 'success') {
           message.error('Try again later!');
@@ -28,11 +40,12 @@ const Auth = ({player, getAddressByQR, close}) => {
     } else {
       message.error('Try again later!');
     }
-  }, [close, dispatch, getAddressByQR, player]);
+  }, [close, dispatch, getAddressByQR, player, transfer]);
 
   useEffect(() => {
     const initialFetch = async () => {
-      const response = await dispatch(getQRApp());
+      console.log(campaign)
+      const response = await dispatch(!transfer ? getQRApp() : getQRTransfer(user.account, campaign.nftSellOffers.result.offers[0].index));
       if (response.status === 'success') {
         const {websocket_status, qr_png} = response.data.data.refs;
         handleQr(qr_png);
@@ -53,6 +66,7 @@ const Auth = ({player, getAddressByQR, close}) => {
 
       socket.onmessage = (response) => {
         const data = JSON.parse(response.data);
+        console.log(response);
         const {signed, payload_uuidv4} = data;
         if (signed) {
           getUser(payload_uuidv4);

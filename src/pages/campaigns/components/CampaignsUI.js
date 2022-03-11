@@ -1,6 +1,7 @@
-import {Row, Col, Input, Button, Spin} from 'antd';
+import {Row, Col, Input, Modal, Spin} from 'antd';
 import {Link} from 'react-router-dom';
 import Campaign from './Campaign';
+import Auth from '../../../components/Auth';
 // import Empty from '../assets/emtpy.png';
 import styles from '../styles/CampaignsUI.module.css';
 
@@ -10,6 +11,12 @@ const CampaignsUI = props => {
     loading,
     searchVal,
     searchCampaign,
+    isPlayer,
+    openTransferQr,
+    closeTransferQr,
+    selectedCampaign,
+    trasnferVisible,
+    user,
   } = props;
   const getContent = () => {
     if (loading) {
@@ -35,7 +42,7 @@ const CampaignsUI = props => {
         <Row gutter={[20, 20]}>
           {campaigns.map(campaign => (
             <Col xs={24} md={12} lg={6} key={campaign.id}>
-              <Campaign campaign={campaign} />
+              <Campaign campaign={campaign} isPlayer={isPlayer} openTransferQr={openTransferQr} />
             </Col>
           ))}
         </Row>
@@ -46,25 +53,33 @@ const CampaignsUI = props => {
     <div className={styles.campaigns}>
       <div className={styles.header}>
         <div className={styles.titles}>
-          <h1 className={styles.title}>Campaigns</h1>
-          <span className={styles.description}>
-            The future of functional NFTs it's here, create a<br />
-            campaign and share the link to your audience
-          </span>
+          <h1 className={styles.title}>{isPlayer ? 'My NFTs' : 'Campaigns'}</h1>
+          {!isPlayer ? (
+            <span className={styles.description}>
+              The future of functional NFTs it's here, create a<br />
+              campaign and share the link to your audience
+            </span>
+          ) : (
+            <span className={styles.description}>
+              Check every NFT you have won in previous contests.
+            </span>
+          )}
         </div>
-        <Link
-          to="/campaigns/new"
-          className={styles.newCampaign}
-        >
-          Create New Campaign
-          <span className="material-icons-round">
-            add
-          </span>
-        </Link>
+        {!isPlayer && (
+          <Link
+            to="/campaigns/new"
+            className={styles.newCampaign}
+          >
+            Create New Campaign
+            <span className="material-icons-round">
+              add
+            </span>
+          </Link>
+        )}
       </div>
       <div className={styles.searchWrap}>
         <Input
-          placeholder="Search campaign"
+          placeholder={isPlayer ? 'Search NFT' : 'Search campaign'}
           size="large"
           className={styles.input}
           value={searchVal}
@@ -78,6 +93,14 @@ const CampaignsUI = props => {
       </div>
       {getContent()}
       <span className={styles.disclaimer}>Made with ❤️ in <span className={styles.strong}>El Salvador</span>.</span>
+      <Modal
+        destroyOnClose
+        width={450}
+        footer={false}
+        onCancel={closeTransferQr}
+        visible={trasnferVisible}>
+        <Auth transfer campaign={selectedCampaign} close={closeTransferQr} user={user} />
+      </Modal>
     </div>
   );
 };

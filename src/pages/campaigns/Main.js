@@ -7,22 +7,25 @@ import CampaignsUI from './components/CampaignsUI';
 
 const Campaigns = () => {
   const [loading, handleLoading] = useState(true);
+  const [trasnferVisible, handleTransferVisible] = useState(false);
   const [results, handleResults] = useState([]);
   const [searchVal, handleSearchVal] = useState('');
+  const [selectedCampaign, handleSelectedCampaign] = useState(null);
   const campaigns = useSelector(selectCampaigns);
   const user =  useSelector(selectUser);
   const dispatch = useDispatch();
+  const isPlayer = user?.type === 'player';
 
   const initialFetch = useCallback(async () => {
     // const response = await dispatch(myCampaigns(user.account));
-    const response = await dispatch(myCampaigns(user.account));
+    const response = await dispatch(myCampaigns(user.account, isPlayer));
     if (response.status === 'success') {
       handleResults(response.campaigns);
     } else {
       message.error('Try again later');
     }
     handleLoading(false);
-  }, [dispatch, user.account]);
+  }, [dispatch, isPlayer, user.account]);
 
   useEffect(() => {
     initialFetch();
@@ -71,12 +74,32 @@ const Campaigns = () => {
     handleSearchVal(search);
   };
 
+  const openTransferQr = campaign => {
+    if (campaign.transfered) {
+      message.success('This NFT is already transfered!');
+    } else {
+      handleSelectedCampaign(campaign);
+      handleTransferVisible(true);
+    }
+  };
+
+  const closeTransferQr = () => {
+    handleSelectedCampaign(null);
+    handleTransferVisible(false);
+  };
+
   return (
     <CampaignsUI
       campaigns={results}
       loading={loading}
       searchVal={searchVal}
       searchCampaign={searchCampaign}
+      isPlayer={isPlayer}
+      openTransferQr={openTransferQr}
+      closeTransferQr={closeTransferQr}
+      selectedCampaign={selectedCampaign}
+      trasnferVisible={trasnferVisible}
+      user={user}
     />
   );
 };

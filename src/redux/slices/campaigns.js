@@ -5,6 +5,9 @@ import {
   createCampaign,
   addPlayer,
   selectWinner,
+  getCampignsPlayer,
+  qrOffer,
+  nftTransfered,
 } from '../../api/Campaign';
 
 export const campaignsSlice = createSlice({
@@ -23,15 +26,24 @@ export const campaignsSlice = createSlice({
     setCampaignWinner: (state, action) => {
       state.campaign.winner = action.payload;
     },
+    setCampaignTransfered: (state, action) => {
+      const index = state.campaigns.findIndex(el => el.id === action.payload);
+      state.campaigns[index].transfered = true;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const {setCampaigns, setCampaign, setCampaignWinner} = campaignsSlice.actions;
+export const {setCampaigns, setCampaign, setCampaignWinner, setCampaignTransfered} = campaignsSlice.actions;
 
-export const myCampaigns = account => async dispatch => {
+export const myCampaigns = (account, isPlayer) => async dispatch => {
   try {
-    const response = await getCampigns(account);
+    let response;
+    if (isPlayer) {
+      response = await getCampignsPlayer(account);
+    } else {
+      response = await getCampigns(account);
+    }
     if (!response.error && response.status === 200) {
       const {campaigns} = response.data;
       dispatch(setCampaigns(campaigns));
@@ -120,6 +132,48 @@ export const campaignWinner = (campaign, account) => async dispatch => {
     const response = await selectWinner(campaign, account);
     if (!response.error && response.status === 200) {
       dispatch(setCampaignWinner(account));
+      return {
+        status: 'success',
+      };
+    }
+    return {
+      status: 'error',
+      type: 'unkown'
+    };
+  } catch (e) {
+    return {
+      status: 'error',
+      type: 'unknown',
+    };
+  }
+};
+
+export const getQRTransfer = (account, index) => async dispatch => {
+  try {
+    const response = await qrOffer(account, index);
+    if (!response.error && response.status === 200) {
+      return {
+        status: 'success',
+        data: response.data,
+      };
+    }
+    return {
+      status: 'error',
+      type: 'unkown'
+    };
+  } catch (e) {
+    return {
+      status: 'error',
+      type: 'unknown',
+    };
+  }
+};
+
+export const verifyTransfer = (account, campaign) => async dispatch => {
+  try {
+    const response = await nftTransfered(account, campaign);
+    if (!response.error && response.status === 200) {
+      dispatch(setCampaignTransfered(campaign));
       return {
         status: 'success',
       };

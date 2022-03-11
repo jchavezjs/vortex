@@ -65,6 +65,12 @@ const EditorUI = props => {
     }
     return (
       <div className={styles.actions}>
+        <span onClick={share} className={styles.share}>
+          Share
+          <span className="material-icons-round">
+            ios_share
+          </span>
+        </span>
         <span className={styles.winner}>
           Winner: {campaign.winner}
         </span>
