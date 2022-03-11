@@ -29,6 +29,10 @@ const LoginUI = ({connectVisible, handleConnectVisible, login, form, sending}) =
                   form={form}
                   onFinish={login}
                   autoComplete="off"
+                  defaultValue={{
+                    email: 'acme@company.com',
+                    password: 'acme09',
+                  }}
                 >
                   <Form.Item
                     name="email"
