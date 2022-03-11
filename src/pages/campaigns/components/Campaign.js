@@ -24,7 +24,6 @@ const Campaign = ({campaign, isPlayer, openTransferQr}) => {
         <span className={styles.title}>{campaign.title}</span>
         <div className={styles.description}>
           {campaign.description}
-          {campaign.description}
         </div>
         <div className={styles.actions}>
           {!isPlayer ? (
