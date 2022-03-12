@@ -66,7 +66,6 @@ const Auth = ({player, transfer, campaign, getAddressByQR, close, user}) => {
 
       socket.onmessage = (response) => {
         const data = JSON.parse(response.data);
-        console.log(response);
         const {signed, payload_uuidv4} = data;
         if (signed) {
           getUser(payload_uuidv4);

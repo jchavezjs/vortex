@@ -1,4 +1,5 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import {useLocation, useNavigate} from 'react-router-dom';
 import {Form, message} from 'antd';
 import {useDispatch} from 'react-redux';
 import {signIn} from '../../redux/slices/user';
@@ -9,6 +10,14 @@ const Login = () => {
   const [connectVisible, handleConnectVisible] = useState(false);
   const [form] = Form.useForm();
   const dispatch = useDispatch();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      navigate('/');
+    }
+  }, []);
 
   const login = async () => {
     handleSending(true);
